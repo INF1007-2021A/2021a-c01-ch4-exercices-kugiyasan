@@ -2,24 +2,41 @@
 # -*- coding: utf-8 -*-
 
 
+# string = "Bonjour!" = == === =>
 def is_even_len(string: str) -> bool:
-    pass
+    return len(string) % 2 == 0
+    # return len(string) & 1 == 0
 
 
 def remove_third_char(string: str) -> str:
-    pass
+    return string[:2] + string[3:]
 
 
 def replace_char(string: str, old_char: str, new_char: str) -> str:
-    pass
+    # return string.replace(old_char, new_char)
+    result = ""
+    for c in string:
+        if c == old_char:
+            result += new_char
+        else:
+            result += c
+
+    return result
 
 
 def get_number_of_char(string: str, char: str) -> int:
-    pass
+    # return string.count(char)
+
+    # count = 0
+    # for c in string:
+    #     if c == char:
+    #         count += 1
+
+    return sum(c == char for c in string)
 
 
 def get_number_of_words(sentence: str, word: str) -> int:
-    pass
+    return sum(w == word for w in sentence.split())
 
 
 def main() -> None:
@@ -30,16 +47,24 @@ def main() -> None:
         print(f"Le nombre de caractère dans la chaine {chaine} est impair")
 
     chaine = "salut monde!"
-    print(f"On supprime le 3e caratère dans la chaine: {chaine}. Résultat : {remove_third_char(chaine)}")
+    print(
+        f"On supprime le 3e caratère dans la chaine: {chaine}. Résultat : {remove_third_char(chaine)}"
+    )
 
     chaine = "hello world!"
-    print(f"On remplace le caratère w par le caractère z dans la chaine: {chaine}. Résultat : {replace_char(chaine, 'w', 'z')}")
+    print(
+        f"On remplace le caratère w par le caractère z dans la chaine: {chaine}. Résultat : {replace_char(chaine, 'w', 'z')}"
+    )
 
-    print(f"Le nombre d'occurrence de l dans hello est : {get_number_of_char(chaine, 'l')}")
-    
+    print(
+        f"Le nombre d'occurrence de l dans hello est : {get_number_of_char(chaine, 'l')}"
+    )
+
     chaine = "Baby shark doo doo doo doo doo doo"
-    print(f"L'occurence du mot doo dans la chaine {chaine} est: {get_number_of_words(chaine, 'doo')}")
+    print(
+        f"L'occurence du mot doo dans la chaine {chaine} est: {get_number_of_words(chaine, 'doo')}"
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
